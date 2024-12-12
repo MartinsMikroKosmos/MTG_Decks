@@ -39,8 +39,10 @@ fun NavGraph(navController: NavHostController) {
                 listOf(
                     navArgument("cardId") { type = NavType.StringType },
                 ),
-        ) {
+        ) { backStackEntry ->
+            val cardId = backStackEntry.arguments?.getString("cardId") ?: return@composable
             CardDetailScreen(
+                cardId = cardId,
                 onBackClick = {
                     navController.popBackStack()
                 },
